@@ -1,0 +1,12 @@
+175
+select firstName, lastName, city, state from Person p left join Address a on p.personId = a.personId group by a.persionId
+
+181
+select name as Employee from Employee as e where e.salary > (select salary from Employee where id = e.managerId)
+
+182
+select email from Person group by email having count(email) > 1;
+
+183
+select name as Customers from Customers as c where c.id not in (select
+customerId from Orders);
