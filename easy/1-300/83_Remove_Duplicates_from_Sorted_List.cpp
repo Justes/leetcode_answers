@@ -1,7 +1,11 @@
-#include<iostream>
-
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
 using namespace std;
 
+
+//Definition for singly-linked list.
 struct ListNode {
     int val;
     ListNode *next;
@@ -12,30 +16,16 @@ struct ListNode {
 
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        ListNode *node, *ln;
-        ln = new ListNode();
-        node = ln;
+    ListNode* deleteDuplicates(ListNode* head) {
+        ListNode* f = head;
 
-        while(list1 && list2) {
-            if(list1->val < list2->val) {
-                node->next = list1;
-                list1 = list1->next;
-            } else {
-                node->next = list2;
-                list2 = list2->next;
+        while(head) {
+            while(head->next && head->val == head->next->val) {
+                head->next = head->next->next;
             }
-            node = node->next;
+            head = head->next;
         }
-
-        if(list1) {
-            node->next = list1;
-        }
-        if(list2) {
-            node->next = list2;
-        }
-
-        return ln->next;
+        return f;
     }
 };
 
@@ -47,13 +37,7 @@ void createList(ListNode *L, int n)
         L->val = tmp->val = i;
         L->next = tmp;
         L = L->next;
-    }
-}
 
-void createList2(ListNode *L, int n)
-{
-    ListNode *tmp;
-    for(int i=1; i<n; i+=2) {
         tmp = new ListNode();
         L->val = tmp->val = i;
         L->next = tmp;
@@ -61,8 +45,7 @@ void createList2(ListNode *L, int n)
     }
 }
 
-int main()
-{
+int main() {
     int n = 3;
     ListNode *L, *L2, *L3, *h1, *h2;
     L = new ListNode();
@@ -70,24 +53,19 @@ int main()
     h1 = L;
     h2 = L2;
     createList(L, n);
+
     while(L->next != nullptr) {
         cout << L->val << endl;
         L = L->next;
     }
 
-    n = 6;
-    createList2(L2, n);
-    while(L2->next != nullptr) {
-        cout << L2->val << endl;
-        L2 = L2->next;
-    }
-
     cout << "result" << endl;
 
-    Solution *sol;
-    L3 = sol->mergeTwoLists(h1, h2);
 
-    while(L3->next != nullptr) {
+    Solution* sol;
+    L3 = sol->deleteDuplicates(h1);
+
+    while(L3) {
         cout << L3->val << endl;
         L3 = L3->next;
     }
