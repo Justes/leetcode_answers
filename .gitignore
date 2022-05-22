@@ -1,3 +1,5 @@
 *.o
 *.swp
 *.exe
+.DS_STORE
+test
