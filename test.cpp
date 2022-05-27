@@ -1,37 +1,43 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <map>
+#include <unordered_map>
+#include <unordered_set>
 #include <algorithm>
+#include <deque>
+#include <stack>
 using namespace std;
 
-
+// 84
 class Solution {
 public:
-    int titleToNumber(string columnTitle) {
-		int len = columnTitle.length();
-		int k = 0, j = 0;
-		for(int i = len - 1; i >= 0; i--) {
-			int n = 1;
-			j = len - 1 - i;
-			while(j--) {
-				n *= 26; 
-			}
-			k +=  (columnTitle[i] - 'A' + 1) * n;
-		}
+    int largestRectangleArea(vector<int>& heights) {
+        stack<int> st;
+        heights.push_back(0);
+        int maxArea = 0;
 
-		return k;
+        for(int i = 0; i < heights.size(); i++) {
+            while(!st.empty() && heights[st.top()] > heights[i]) {
+                int index = st.top();
+                st.pop();
+                int left = st.empty() ? -1 : st.top();
+                maxArea = max(maxArea, heights[index] * (i - left - 1));
+            }
+            st.push(i);
+        }
+
+        return maxArea;
     }
 };
 
 int main() {
-	string str;
-	cin >> str;
+    vector<int> vec = {2,1,5,6,2,3};
+    //vector<int> vec = {2,1,5,6,2,3};
+    //vector<int> vec = {2,4};
 
     Solution* sol;
-    int k = sol->titleToNumber(str);
-
-	cout << k << endl;
+    int k = sol->largestRectangleArea(vec);
+    cout << k << endl;
 
     return 0;
 }
