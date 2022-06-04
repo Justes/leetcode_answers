@@ -4,6 +4,13 @@
 #include<string>
 using namespace std;
 
+// 这种做法就是每次把最右侧的1置为0, 然后记录次数
+// 例1101
+// 1101 1100, n = 1100, 1
+// 1100 1011, n = 1000, 2
+// 1000 0111, n = 0000, 3
+// 结束 count = 3
+
 class Solution {
 public:
     vector<int> countBits(int n) {
