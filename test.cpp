@@ -1,43 +1,42 @@
 #include <iostream>
 #include <vector>
-#include <string>
-#include <unordered_map>
-#include <unordered_set>
-#include <algorithm>
-#include <deque>
-#include <stack>
 using namespace std;
 
-// 84
+// 46
 class Solution {
 public:
-    int largestRectangleArea(vector<int>& heights) {
-        stack<int> st;
-        heights.push_back(0);
-        int maxArea = 0;
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int> > result;
 
-        for(int i = 0; i < heights.size(); i++) {
-            while(!st.empty() && heights[st.top()] > heights[i]) {
-                int index = st.top();
-                st.pop();
-                int left = st.empty() ? -1 : st.top();
-                maxArea = max(maxArea, heights[index] * (i - left - 1));
-            }
-            st.push(i);
-        }
+	    permuteRecursive(nums, 0, result);
+	    return result;
+    }
 
-        return maxArea;
+    void permuteRecursive(vector<int> &num, int begin, vector<vector<int> > &result) {
+		if (begin >= num.size()) {
+		    // one permutation instance
+		    for (auto x : num)
+                cout << x << endl;
+            cout << "------" << endl;
+		    result.push_back(num);
+		    return;
+		}
+
+		for (int i = begin; i < num.size(); i++) {
+            cout << "begin:" << begin << " i:" << i << endl;
+		    swap(num[begin], num[i]);
+		    permuteRecursive(num, begin + 1, result);
+		    // reset
+		    swap(num[begin], num[i]);
+		}
     }
 };
 
 int main() {
-    vector<int> vec = {2,1,5,6,2,3};
-    //vector<int> vec = {2,1,5,6,2,3};
-    //vector<int> vec = {2,4};
+    vector<int> nums = {1, 2, 3};
 
     Solution* sol;
-    int k = sol->largestRectangleArea(vec);
-    cout << k << endl;
+    vector<vector<int>> vec = sol->permute(nums);
 
     return 0;
 }
