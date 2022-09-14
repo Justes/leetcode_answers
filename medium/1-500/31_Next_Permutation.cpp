@@ -63,3 +63,30 @@ int main()
         cout << k << endl;
     return 0;
 }
+
+/*
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int n = nums.size(), index = -1, last = 0, tmp = nums[n - 1];
+        for (int i = n - 1; i > 0; i--) {
+            if(nums[i] > nums[i - 1]) {
+                index = i - 1;
+                break;
+            }
+        }
+        if(index != -1) {
+            for(int i = n - 1; i >= 0; i--) {
+                if (nums[i] > nums[index]) {
+                    last = i;
+                    break;
+                }
+            }
+            swap(nums[index], nums[last]);
+            sort(nums.begin() + 1 + index, nums.end());
+        } else if(n > 1) {
+            sort(nums.begin(), nums.end());
+        }
+    }
+};
+*/
