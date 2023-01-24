@@ -37,6 +37,44 @@ public:
     }
 };
 
+/*
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int f = 0, k = nums.size(), b = k - 1;
+        while (f <= b) {
+            while (f <= b && nums[b] == val) {
+                b--;
+                k--;
+            }
+            
+            if (f <= b && nums[f] == val) {
+                nums[f++] = nums[b--];
+                k--;
+            }
+            if(nums[f] != val) f++;
+        }
+
+        return k;
+    }
+};
+
+
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int slow = 0;
+        for (int i = 0 ; i < nums.size(); i++) {
+            if (val != nums[i]) {
+                nums[slow++] = nums[i];
+            }
+        }
+
+        return slow;
+    }
+};
+*/
+
 
 int main()
 {
