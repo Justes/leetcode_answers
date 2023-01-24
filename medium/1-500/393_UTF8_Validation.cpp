@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <set>
+#include <algorithm>
+#include <deque>
+#include <stack>
+#include <cmath>
+#include <bitset>
+#include <map>
+using namespace std;
+
+class Solution {
+public:
+    bool validUtf8(vector<int>& data) {
+        int count = 0;
+        for (auto c : data) {
+            if (count == 0) {
+                if ((c >> 5) == 0b110) count = 1;
+                else if ((c >> 4) == 0b1110) count = 2;
+                else if ((c >> 3) == 0b11110) count = 3;
+                else if ((c >> 7)) return false;
+            } else {
+                if ((c >> 6) != 0b10) return false;
+                count--;
+            }
+        }
+        return count == 0;
+    }
+};
+
+int main()
+{
+    vector<int> nums = {235,140,4};
+    Solution *sol = new Solution;
+    bool k = sol->validUtf8(nums);
+    cout << k << endl;
+}
