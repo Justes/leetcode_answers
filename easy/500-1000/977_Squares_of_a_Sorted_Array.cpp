@@ -31,3 +31,26 @@ int main() {
 
     return 0;
 }
+
+/*
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> res = nums;
+        int f = 0, b = nums.size() - 1, fv = 0, bv = 0, k = b;
+        while (f <= b) {
+            fv = nums[f] * nums[f];
+            bv = nums[b] * nums[b];
+            if (fv < bv) {
+                res[k--] = bv;
+                b--;
+            } else {
+                res[k--] = fv;
+                f++;
+            }
+        }
+
+        return res;
+    }
+};
+*/
