@@ -54,3 +54,27 @@ int main() {
 	}
 	return 0;
 }
+
+/*
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode* node = new ListNode(0);
+        node->next = head;
+        ListNode* cur = node;
+        while (cur->next != NULL) {
+            if (cur->next->val == val) {
+                ListNode* tmp = cur->next;
+                cur->next = cur->next->next;
+                delete tmp;
+            } else {
+                cur = cur->next;
+            }
+        }
+
+        head = node->next;
+        delete node;
+        return head;
+    }
+};
+*/

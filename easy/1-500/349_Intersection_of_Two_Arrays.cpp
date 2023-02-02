@@ -36,3 +36,47 @@ int main() {
 
 	return 0;
 }
+
+
+/*
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        int n1 = nums1.size(), n2 = nums2.size();
+        unordered_map<int, int> ump;
+        vector<int> res;
+
+        for (int i = 0; i < n2; i++) {
+            if(ump.count(nums2[i]) == 0) {
+                ump[nums2[i]]++;
+            }
+        }
+
+        for (int i = 0; i < n1; i++) {
+            if (ump.count(nums1[i]) && ump[nums1[i]] != 0) {
+                res.push_back(nums1[i]);
+                ump[nums1[i]] = 0;
+            }
+        }
+
+        return res;
+    }
+};
+
+
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> res;
+        unordered_set<int> st(nums2.begin(), nums2.end());
+
+        for (auto num : nums1) {
+            if (st.find(num) != st.end()) {
+                res.insert(num);
+            }
+        }
+
+        return vector<int>(res.begin(), res.end());
+    }
+};
+*/
