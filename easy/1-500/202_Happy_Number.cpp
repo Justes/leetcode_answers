@@ -41,3 +41,27 @@ int main() {
 
     return 0;
 }
+
+/*
+class Solution {
+public:
+    bool isHappy(int n) {
+        unordered_set<int> st;
+        int result = 0, b = 0;
+
+        while (result != 1) {
+            result = 0;
+            while (n) {
+                b = n % 10;
+                n /= 10;
+                result += b * b;
+            }
+            if(st.find(result) != st.end()) return false;
+            st.insert(result);
+            n = result;
+        }
+
+        return true;
+    }
+};
+*/
