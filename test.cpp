@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <limits>
 using namespace std;
 
 // 46
@@ -32,11 +33,18 @@ public:
     }
 };
 
-int main() {
     vector<int> nums = {1, 2, 3};
-
     Solution* sol;
     vector<vector<int>> vec = sol->permute(nums);
+
+int main() {
+	int a = 2000000000;
+	int b = 1000000000;
+	long val = a + b;
+
+	cout << val << endl;
+	cout << (long)(a + b) << endl;
+	cout << numeric_limits<long>::max() << endl;
 
     return 0;
 }
